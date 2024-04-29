@@ -1,3 +1,12 @@
+import pandas as pd
+import numpy as np
+import nltk
+nltk.download('stopwords')
+import random
+import gensim
+import spacy_udpipe
+import re
+
 # RANDOM SWAP ---------------------------------------------------
 def random_swap(words, n):
     new_words = words.copy()
