@@ -92,15 +92,12 @@ def synonym_replacement_vec(words, n):
     new_words = sentence.split(' ')
     return new_words
 
-def load_wv_from_text(path):
-    return gensim.models.KeyedVectors.load_word2vec_format(
-                path, 
-                binary=False, 
-                no_header=True
-    )
+wv_from_text = gensim.models.KeyedVectors.load_word2vec_format(
+    "word2vec/glove.6B.100d.txt", 
+    binary=False, 
+    no_header=True)
 
-def get_synonyms_vec(word, wv_from_text_path):
-    wv_from_text = load_wv_from_text(wv_from_text_path)
+def get_synonyms_vec(word):
     synonyms = set()
     flag = False
     vec = None
