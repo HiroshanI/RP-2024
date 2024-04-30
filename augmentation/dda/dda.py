@@ -7,12 +7,10 @@ import gensim
 import spacy_udpipe
 import re
 
-import requests
-from tqdm import tqdm
-stop_words = list(set(nltk.corpus.stopwords.words('english')))
-
 class DDA:
     def __init__(self, wv_path, glove=False):
+        self.stop_words = list(set(nltk.corpus.stopwords.words('english')))
+        print(f"Loading {wv_path} ...")
         if glove:
             self.wv_from_text = gensim.models.KeyedVectors.load_word2vec_format(
                 wv_path, 
@@ -107,7 +105,7 @@ class DDA:
     
     def synonym_replacement_vec(self, words, n, wv_path):
         new_words = words.copy()
-        random_word_list = list(set([word for word in words if word not in stop_words]))
+        random_word_list = list(set([word for word in words if word not in self.stop_words]))
         random.shuffle(random_word_list)
         num_replaced = 0
         for random_word in random_word_list:
