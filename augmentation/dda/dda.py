@@ -137,7 +137,7 @@ class DDA:
         words = [word for word in words_list if word != '']  # remove empty words
         num_words = len(words_list)  # number of words in the sentence
 
-        augmented_sentences = []
+        augmented_sentences = [sentence]
         num_new_per_technique = int(num_aug / 4) + 1 # number of augmented sentences per technique
     
         #synonmym replacement
