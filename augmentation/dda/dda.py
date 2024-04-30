@@ -103,13 +103,13 @@ class DDA:
             synonyms.remove(word)
         return synonyms
     
-    def synonym_replacement_vec(self, words, n, wv_path):
+    def synonym_replacement_vec(self, words, n):
         new_words = words.copy()
         random_word_list = list(set([word for word in words if word not in self.stop_words]))
         random.shuffle(random_word_list)
         num_replaced = 0
         for random_word in random_word_list:
-            synonyms = get_synonyms_vec(random_word, wv_path)
+            synonyms = get_synonyms_vec(random_word)
             if len(synonyms) >= 1:
                 synonym = random.choice(list(synonyms))
                 new_words = [synonym if word.lower() == random_word else word for word in new_words]
